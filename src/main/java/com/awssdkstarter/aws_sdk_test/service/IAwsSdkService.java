@@ -2,7 +2,10 @@ package com.awssdkstarter.aws_sdk_test.service;
 
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
+
 public interface IAwsSdkService {
 
-    String getJobResult(Integer jobId);
+    void getJobResult(Integer jobId);
+    List<String> getDiscoveryResult(String service);
 }
