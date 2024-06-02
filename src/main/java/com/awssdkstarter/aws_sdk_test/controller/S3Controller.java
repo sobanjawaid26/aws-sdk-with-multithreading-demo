@@ -23,4 +23,17 @@ public class S3Controller {
                 s3ObjectRequest.getBucketName(), s3ObjectRequest.getPattern());
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
+
+    @GetMapping(path = "/getS3BucketObjectAndSave/{bucketName}")
+    public ResponseEntity getS3BucketObjectAndSave(@PathVariable("bucketName") String bucketName) {
+        is3CustomServie.getS3BucketObjectsAndSave(bucketName);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+    @GetMapping(path = "/getS3BucketObjectCount/{bucketName}")
+    public ResponseEntity getS3BucketObjectLike(@PathVariable("bucketName") String bucketName) {
+        int count = is3CustomServie.getS3BucketObjectCount(bucketName);
+        String result = "Bucket count for " + bucketName + " is : " + count;
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
 }
